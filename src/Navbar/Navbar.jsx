@@ -11,7 +11,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "btn btn-primary btn-sm" : "btn btn-ghost btn-sm"
+            isActive ? "text-primary" : ""
           }
         >
           Home
@@ -21,7 +21,7 @@ const Navbar = () => {
         <NavLink
           to="/addProduct"
           className={({ isActive }) =>
-            isActive ? "btn btn-primary btn-sm" : "btn btn-ghost btn-sm"
+            isActive ? "text-primary" : ""
           }
         >
           Add Product
@@ -31,7 +31,7 @@ const Navbar = () => {
         <NavLink
           to="/myCart"
           className={({ isActive }) =>
-            isActive ? "btn btn-primary btn-sm" : "btn btn-ghost btn-sm"
+            isActive ? "text-primary" : ""
           }
         >
           My Cart
@@ -62,7 +62,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-4 z-[5] shadow bg-base-100 p-2"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navList}
             </ul>
@@ -75,7 +75,7 @@ const Navbar = () => {
               to="/"
               className=" font-Pacifico normal-case text-sm md:text-3xl"
             >
-              Jobfiy
+              Jobify
             </Link>
           </div>
         </div>
