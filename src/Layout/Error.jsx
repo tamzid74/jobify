@@ -1,13 +1,19 @@
-import error from "../assets/images/404_error-removebg-preview.png";
+import { Link } from "react-router-dom";
+import error from "../assets/images/undraw_Page_not_found_re_e9o6-removebg-preview.png";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const Error = () => {
   return (
     <>
-      <div className="  max-w-6xl mx-auto  ">
+      <div className=" max-w-6xl mx-auto p-5  ">
         <div className="flex justify-start mt-10">
-          <button className="btn btn-primary btn-sm">Go Back home</button>
+          <Link to="/">
+            <button className="btn btn-primary btn-sm">
+              <AiOutlineArrowLeft></AiOutlineArrowLeft>Go Back home
+            </button>
+          </Link>
         </div>
-        <div className=" min-h-screen flex justify-center items-center">
+        <div className=" h-[80vh] flex justify-center items-center">
           <img src={error} alt="" />
         </div>
       </div>
