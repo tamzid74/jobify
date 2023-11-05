@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCfQhh7W5nkDS3lSLgOr_vx5pPZTa64e2I",
-  authDomain: "jobify-74f3d.firebaseapp.com",
-  projectId: "jobify-74f3d",
-  storageBucket: "jobify-74f3d.appspot.com",
-  messagingSenderId: "638642173837",
-  appId: "1:638642173837:web:8dbaf797e5927053a02fc4",
+  apiKey:import.meta.env.VITE_APIKEY,
+  authDomain:import.meta.env.VITE_AUTHDOMAIN,
+  projectId:import.meta.env.VITE_PROJECTID,
+  storageBucket:import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId:import.meta.env.VITE_MESSAGINGSENDERID,
+  appId:import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase

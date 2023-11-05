@@ -11,7 +11,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-primary" : ""
+            isActive ? "text-primary font-semibold" : ""
           }
         >
           Home
@@ -19,22 +19,58 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/addProduct"
+          to="/alljobs"
           className={({ isActive }) =>
-            isActive ? "text-primary" : ""
+            isActive ? "text-primary font-semibold" : ""
           }
         >
-          Add Product
+          All Jobs
         </NavLink>
       </li>
+      {user?.email && (
+        <li>
+          <NavLink
+            to="/appliedjobs"
+            className={({ isActive }) =>
+              isActive ? "text-primary font-semibold" : ""
+            }
+          >
+            Applied Jobs
+          </NavLink>
+        </li>
+      )}
+      {user?.email && (
+        <li>
+          <NavLink
+            to="/addajob"
+            className={({ isActive }) =>
+              isActive ? "text-primary font-semibold" : ""
+            }
+          >
+            Applied Jobs
+          </NavLink>
+        </li>
+      )}
+      {user?.email && (
+        <li>
+          <NavLink
+            to="/myjobs"
+            className={({ isActive }) =>
+              isActive ? "text-primary font-semibold" : ""
+            }
+          >
+            My Jobs
+          </NavLink>
+        </li>
+      )}
       <li>
         <NavLink
-          to="/myCart"
+          to="/blogs"
           className={({ isActive }) =>
-            isActive ? "text-primary" : ""
+            isActive ? "text-primary font-semibold" : ""
           }
         >
-          My Cart
+          Blogs
         </NavLink>
       </li>
     </>
@@ -62,7 +98,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-roboto"
             >
               {navList}
             </ul>
@@ -73,14 +109,14 @@ const Navbar = () => {
             </Link>
             <Link
               to="/"
-              className=" font-Pacifico normal-case text-sm md:text-3xl"
+              className=" normal-case text-sm md:text-3xl font-edu font-semibold"
             >
-              Jobify
+              Jo<span className="text-primary font-extrabold">bi</span>fy
             </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navList}</ul>
+          <ul className="flex gap-7 menu-horizontal px-1 font-roboto"> {navList}</ul>
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end z-10">
@@ -99,11 +135,11 @@ const Navbar = () => {
           </div>
 
           {user?.email ? (
-            <button onClick={logOut} className="btn btn-outline btn-sm">
+            <button onClick={logOut} className="btn btn-outline btn-sm font-roboto">
               Sign out
             </button>
           ) : (
-            <Link className="btn btn-primary btn-outline btn-sm" to="/login">
+            <Link className="btn btn-primary btn-outline btn-sm font-roboto" to="/login">
               SignIn
             </Link>
           )}

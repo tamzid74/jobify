@@ -17,7 +17,7 @@ const Error = () => {
             </button>
           </Link>
         </div>
-        <div className=" h-[80vh] flex justify-center items-center">
+        <div className=" w-full h-[80vh] flex justify-center items-center">
           <img src={error} alt="" />
         </div>
       </div>
