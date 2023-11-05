@@ -1,7 +1,14 @@
 // import Swal from "sweetalert2";
+import { useContext, useState } from "react";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import { AuthContext } from "../provider/AuthProvider";
 
 const AddAJob = () => {
-  const handleAdd = (e) => {
+    const{user}=useContext(AuthContext)
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const handleAddJob = (e) => {
     e.preventDefault();
     const form = e.target;
     const photo = form.photo.value;
@@ -11,7 +18,9 @@ const AddAJob = () => {
     const salaryRange = form.salaryRange.value;
     const jobDescription = form.jobDescription.value;
     const jobPostingDate = form.jobPostingDate.value;
-    const newProduct = {
+    const applicationDeadline = form.applicationDeadline.value;
+    const jobApplicantsNumber = form.jobApplicantsNumber.value;
+    const newJob = {
       photo,
       name,
       jobTitle,
@@ -19,15 +28,20 @@ const AddAJob = () => {
       salaryRange,
       jobDescription,
       jobPostingDate,
+      applicationDeadline,
+      jobApplicantsNumber
     };
-    console.log(newProduct);
+    console.log(newJob);
+  };
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
   };
   return (
     <div className="max-w-6xl mx-auto p-5">
       <h1 className="text-3xl text-center font-extrabold mb-5 border-b-2 p-2">
-        Add Product
+        Add A Job
       </h1>
-      <form onSubmit={handleAdd}>
+      <form onSubmit={handleAddJob}>
         {/* {row-1} */}
         <div className="md:flex gap-4">
           <div className="form-control w-full">
@@ -54,6 +68,7 @@ const AddAJob = () => {
               <input
                 type="text"
                 placeholder="Name"
+                defaultValue={user?.displayName}
                 name="name"
                 className="input input-bordered w-full"
               />
@@ -83,7 +98,7 @@ const AddAJob = () => {
               <input
                 type="text"
                 placeholder="Salary range"
-                name="type"
+                name="salaryRange"
                 className="input input-bordered w-full"
               />
             </label>
@@ -92,10 +107,11 @@ const AddAJob = () => {
             <label className="label">
               <span className="label-text">Job Category</span>
             </label>
-            <select className="select select-bordered w-full" name="jobCategory">
-              <option value="on site">
-                On Site
-              </option>
+            <select
+              className="select select-bordered w-full"
+              name="jobCategory"
+            >
+              <option value="on site">On Site</option>
               <option value="remote">Remote</option>
               <option value="part-time">Part-Time</option>
               <option value="hybrid">Hybrid</option>
@@ -130,10 +146,40 @@ const AddAJob = () => {
             </label>
           </div>
         </div>
+        {/* {row-5} */}
+        <div className="md:flex gap-4">
+          <div className="form-control md:w-1/2">
+            <label className="label">
+              <span className="label-text">Application Deadline</span>
+            </label>
+            <label className="input-group">
+              <DatePicker
+                selected={selectedDate}
+                onChange={handleDateChange}
+                name="applicationDeadline"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+          <div className="form-control md:w-1/2">
+            <label className="label">
+              <span className="label-text">Job Applicants Number</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="type"
+                placeholder="Job Applicants Number"
+                name="jobApplicantsNumber"
+                defaultValue={0}
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+        </div>
         <input
           className="btn btn-success btn-sm w-full mt-10"
           type="submit"
-          value="Add Product"
+          value="ADD A JOB"
         />
       </form>
     </div>

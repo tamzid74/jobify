@@ -15,12 +15,6 @@ const Footer = () => {
           </p>
         </aside>
         <nav>
-          <header className=" text-primary font-bold text-base">Address</header>
-          <p>Head Office: Banani,Dhaka,Bangladesh</p>
-          <p>Phone number: +880-1300072001</p>
-          <p>Email: jobifyco@web.com</p>
-        </nav>
-        <nav>
           <header className="text-primary font-bold text-base">Company</header>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
@@ -32,6 +26,12 @@ const Footer = () => {
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>
+        </nav>
+        <nav>
+          <header className=" text-primary font-bold text-base">Contact Information</header>
+          <p>Head Office: Banani,Dhaka,Bangladesh</p>
+          <p>Phone number: +880-1300072001</p>
+          <p>Email: info@jobify.com</p>
         </nav>
       </footer>
       <div className="flex justify-center text-2xl gap-5 text-primary bg-base-200">

@@ -123,20 +123,22 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div className="dropdown dropdown-end z-10">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                {user ? <img src={user.photoURL} /> : ""}
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>{user && <span>{user?.displayName}</span>}</li>
-              <li>{user && <span>{user.email}</span>}</li>
-            </ul>
-          </div>
+          {user && (
+            <div className="dropdown dropdown-end z-10">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  {user ? <img src={user.photoURL} /> : ""}
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>{user && <span>{user?.displayName}</span>}</li>
+                <li>{user && <span>{user.email}</span>}</li>
+              </ul>
+            </div>
+          )}
 
           {user?.email ? (
             <motion.button
@@ -147,11 +149,13 @@ const Navbar = () => {
               Sign out
             </motion.button>
           ) : (
-            <Link
-              className="btn btn-primary btn-outline btn-sm font-roboto"
-              to="/login"
-            >
-              SignIn
+            <Link to="/login">
+              <motion.p
+                whileHover={{ scale: 1.1 }}
+                className="btn btn-primary btn-outline btn-sm font-roboto"
+              >
+                SignIn
+              </motion.p>
             </Link>
           )}
         </div>
