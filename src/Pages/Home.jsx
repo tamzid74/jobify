@@ -3,14 +3,15 @@ import Banner from "../Components/Banner";
 
 
 const Home = () => {
-    return (
-        <div>
-            <Helmet>
-                <title>Jobify | Home</title>
-            </Helmet>
-            <Banner></Banner>
-        </div>
-    );
+  return (
+    <div>
+      <Helmet>
+        <title>Jobify | Home</title>
+      </Helmet>
+
+      <Banner></Banner>
+    </div>
+  );
 };
 
 export default Home;
