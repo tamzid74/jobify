@@ -3,7 +3,7 @@ import image1 from "../assets/images/rsz_24portrait-smiling-blonde-woman-removeb
 
 const Extra = () => {
   return (
-    <div className=" w-full max-w-[1250px]  px-[25px] mx-auto mt-10 mb-10">
+    <div className=" w-full max-w-[1250px]  px-[25px] mx-auto mt-20 mb-20">
       <div
         style={{ backgroundImage: `url(${image})` }}
         className="hidden lg:flex rounded-3xl h-[440px]"
