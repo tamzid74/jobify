@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/images/employee_2936747 (2).png";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -138,12 +139,13 @@ const Navbar = () => {
           </div>
 
           {user?.email ? (
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
               onClick={logOut}
               className="btn btn-primary btn-outline btn-sm font-roboto"
             >
               Sign out
-            </button>
+            </motion.button>
           ) : (
             <Link
               className="btn btn-primary btn-outline btn-sm font-roboto"

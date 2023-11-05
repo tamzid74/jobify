@@ -1,16 +1,23 @@
+import { motion } from "framer-motion";
+import bannerImage from '../assets/images/talented-designers-focused-work_1098-16115.jpg'
+
 const Banner = () => {
   return (
     <div
       className="hero min-h-screen"
-      style={{
-        backgroundImage:
-          "url(https://img.freepik.com/free-photo/talented-designers-focused-work_1098-16115.jpg?w=1380&t=st=1699167463~exp=1699168063~hmac=e22f8a8d2977ebc244f8b79e232368e5c83815bc312395c16fceac0d5daad89b)",
-      }}
+      style={{ backgroundImage: `url(${bannerImage})` }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
-        <div className="">
-          <h1 className="mb-5 text-3xl md:text-5xl font-roboto font-bold">
+        <motion.div
+          initial={{ opacity: 0, scale: 2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.5,
+          }}
+        >
+          <h1 className="mb-5 text-3xl lg:text-5xl font-roboto font-bold">
             Join us &{" "}
             <span className="text-primary font-extrabold">
               Explore Thousands
@@ -33,7 +40,7 @@ const Banner = () => {
               <button className="btn btn-primary join-item">Search</button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
