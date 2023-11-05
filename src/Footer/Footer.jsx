@@ -10,11 +10,12 @@ const Footer = () => {
           <p className="font-roboto">
             <span className="text-primary font-bold">Jobify</span> website co...
             <br />
-            Providing reliable jobs since <span className="text-primary font-bold">1992</span>
+            Providing reliable jobs since{" "}
+            <span className="text-primary font-bold">1992</span>
           </p>
         </aside>
         <nav>
-        <header className=" text-primary font-bold text-base">Address</header>
+          <header className=" text-primary font-bold text-base">Address</header>
           <p>Head Office: Banani,Dhaka,Bangladesh</p>
           <p>Phone number: +880-1300072001</p>
           <p>Email: jobifyco@web.com</p>
@@ -41,7 +42,8 @@ const Footer = () => {
       <footer className="footer footer-center p-4 bg-base-200 text-base-content">
         <aside>
           <p className="font-roboto">
-            Copyright © 2023 - All right reserved by <span className="text-primary font-bold">Jobify</span> website co...
+            Copyright © 2023 - All right reserved by{" "}
+            <span className="text-primary font-bold">Jobify</span> website co...
           </p>
         </aside>
       </footer>

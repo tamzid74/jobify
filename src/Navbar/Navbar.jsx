@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/images/employee_2936747 (2).png";
 import { useContext } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -47,7 +47,7 @@ const Navbar = () => {
               isActive ? "text-primary font-semibold" : ""
             }
           >
-            Applied Jobs
+            Add A Job
           </NavLink>
         </li>
       )}
@@ -76,7 +76,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className=" w-full max-w-[1250px] px-[25px] mx-auto">
+    <div className=" w-full max-w-[1250px] px-[25px] mx-auto ">
       <div className="navbar bg-base-100 sticky inset-0 z-20">
         <div className="navbar-start">
           <div className="dropdown">
@@ -116,7 +116,10 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="flex gap-7 menu-horizontal px-1 font-roboto"> {navList}</ul>
+          <ul className="flex gap-7 menu-horizontal px-1 font-roboto">
+            {" "}
+            {navList}
+          </ul>
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end z-10">
@@ -135,11 +138,17 @@ const Navbar = () => {
           </div>
 
           {user?.email ? (
-            <button onClick={logOut} className="btn btn-outline btn-sm font-roboto">
+            <button
+              onClick={logOut}
+              className="btn btn-outline btn-sm font-roboto"
+            >
               Sign out
             </button>
           ) : (
-            <Link className="btn btn-primary btn-outline btn-sm font-roboto" to="/login">
+            <Link
+              className="btn btn-primary btn-outline btn-sm font-roboto"
+              to="/login"
+            >
               SignIn
             </Link>
           )}
