@@ -41,7 +41,7 @@ const Footer = () => {
       </div>
       <footer className="footer footer-center p-4 bg-base-200 text-base-content">
         <aside>
-          <p className="font-roboto">
+          <p className="font-roboto text-xs md:text-sm ">
             Copyright © 2023 - All right reserved by{" "}
             <span className="text-primary font-bold">Jobify</span> website co...
           </p>

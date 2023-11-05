@@ -76,7 +76,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className=" w-full max-w-[1250px] px-[25px] mx-auto ">
+    <div className=" w-full max-w-[1250px] px-[25px] mx-auto">
       <div className="navbar bg-base-100 sticky inset-0 z-20">
         <div className="navbar-start">
           <div className="dropdown">
@@ -140,7 +140,7 @@ const Navbar = () => {
           {user?.email ? (
             <button
               onClick={logOut}
-              className="btn btn-outline btn-sm font-roboto"
+              className="btn btn-primary btn-outline btn-sm font-roboto"
             >
               Sign out
             </button>
