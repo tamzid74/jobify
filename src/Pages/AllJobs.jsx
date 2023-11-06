@@ -1,6 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const AllJobs = () => {
+  const navigate = useNavigate()
+  const {user}=useContext(AuthContext)
   const [search, setSearch] = useState("");
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -25,13 +30,21 @@ const AllJobs = () => {
     setSearch("");
     setFilteredJobs(jobs);
   };
+  const handleDetailsButton = () => {
+    if (!user) {
+      toast.error("You have to logged in First to see view details");
+      navigate("/login");
+    } else {
+      navigate("/job/:id");
+    }
+  };
 
   return (
     <div className=" w-full max-w-[1250px] px-[25px] mx-auto mt-20 mb-20">
       <h1 className="text-3xl text-center font-extrabold font-roboto">
         All Jobs
       </h1>
-      <div className="join">
+      <div className="join mt-5">
         <div>
           <input
             className="input input-bordered join-item"
@@ -40,8 +53,11 @@ const AllJobs = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <div className="indicator">
-          <button onClick={search?handleSearch:clearSearch} className="btn join-item">
+        <div className="indicator font-roboto">
+          <button
+            onClick={search ? handleSearch : clearSearch}
+            className="btn join-item font-roboto"
+          >
             Search
           </button>
         </div>
@@ -50,7 +66,7 @@ const AllJobs = () => {
       <div className="overflow-x-auto">
         <table className="table table-xs">
           {/* head */}
-          <thead>
+          <thead className="font-roboto">
             <tr>
               <th></th>
               <th className="text-primary">Name</th>
@@ -60,7 +76,7 @@ const AllJobs = () => {
               <th className="text-primary">Application deadLine</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="font-roboto">
             {/* row 1 */}
             {filteredJobs.map((job, index) => (
               <tr key={job._id}>
@@ -73,7 +89,7 @@ const AllJobs = () => {
                 <td>{job.salaryRange}</td>
                 <td>{job.applicationDeadline}</td>
                 <th>
-                  <button className="btn btn-primary btn-outline btn-xs">
+                  <button onClick={handleDetailsButton} className="btn btn-primary btn-outline btn-xs">
                     details
                   </button>
                 </th>

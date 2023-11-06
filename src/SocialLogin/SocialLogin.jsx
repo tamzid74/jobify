@@ -24,7 +24,7 @@ const SocialLogin = () => {
   return (
     <>
       <div className="divider">Continue With</div>
-      <div>
+      <div className="font-roboto">
         <motion.button
           whileHover={{
             scale: 1.2,

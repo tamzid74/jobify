@@ -22,7 +22,7 @@ const AddAJob = () => {
     const jobPostingDate = form.jobPostingDate.value;
     const companyLogo = form.companyLogo.value;
     const applicationDeadline = form.applicationDeadline.value;
-    const jobApplicantsNumber = form.jobApplicantsNumber.value;
+    const jobApplicants = form.jobApplicants.value;
     const email = user?.email;
     const newJob = {
       jobBanner,
@@ -34,36 +34,36 @@ const AddAJob = () => {
       jobDescription,
       jobPostingDate,
       applicationDeadline,
-      jobApplicantsNumber,
+      jobApplicants,
       companyLogo,
     };
     console.log(newJob);
-    fetch('http://localhost:5000/jobs',{
-        method:'POST',
-        headers:{
-            "content-type":"application/json"
-        },
-        body:JSON.stringify(newJob)
+    fetch("http://localhost:5000/jobs", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newJob),
     })
-    .then(res=>res.json())
-    .then(data => {
-        console.log(data)
-        if(data.insertedId){
-            Swal.fire({
-                title: 'Success!',
-                text: 'Product added successfully',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-              })
-              form.reset()
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Product added successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          form.reset();
         }
-    })
+      });
   };
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
   return (
-    <div className="max-w-6xl mx-auto p-5">
+    <div className="max-w-6xl mx-auto p-5 font-roboto">
       <Helmet>
         <title>Jobify | Add A Job</title>
       </Helmet>
@@ -207,13 +207,13 @@ const AddAJob = () => {
           </div>
           <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text">Job Applicants Number</span>
+              <span className="label-text">Job Applicants</span>
             </label>
             <label className="input-group">
               <input
                 type="type"
-                placeholder="Job Applicants Number"
-                name="jobApplicantsNumber"
+                placeholder="Job Applicants"
+                name="jobApplicants"
                 defaultValue={0}
                 className="input input-bordered w-full"
               />
