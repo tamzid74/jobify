@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet-async";
 
-
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const [emailError, setEmailError] = useState("");

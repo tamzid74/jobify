@@ -4,41 +4,70 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const AddAJob = () => {
-    const{user}=useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const handleAddJob = (e) => {
     e.preventDefault();
     const form = e.target;
-    const photo = form.photo.value;
-    const name = form.name.value;
+    const jobBanner = form.jobBanner.value;
+    const userName = form.userName.value;
     const jobTitle = form.jobTitle.value;
     const jobCategory = form.jobCategory.value;
     const salaryRange = form.salaryRange.value;
     const jobDescription = form.jobDescription.value;
     const jobPostingDate = form.jobPostingDate.value;
+    const companyLogo = form.companyLogo.value;
     const applicationDeadline = form.applicationDeadline.value;
     const jobApplicantsNumber = form.jobApplicantsNumber.value;
+    const email = user?.email;
     const newJob = {
-      photo,
-      name,
+      jobBanner,
+      userName,
+      email,
       jobTitle,
       jobCategory,
       salaryRange,
       jobDescription,
       jobPostingDate,
       applicationDeadline,
-      jobApplicantsNumber
+      jobApplicantsNumber,
+      companyLogo,
     };
     console.log(newJob);
+    fetch('http://localhost:5000/jobs',{
+        method:'POST',
+        headers:{
+            "content-type":"application/json"
+        },
+        body:JSON.stringify(newJob)
+    })
+    .then(res=>res.json())
+    .then(data => {
+        console.log(data)
+        if(data.insertedId){
+            Swal.fire({
+                title: 'Success!',
+                text: 'Product added successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+              form.reset()
+        }
+    })
   };
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
   return (
     <div className="max-w-6xl mx-auto p-5">
-      <h1 className="text-3xl text-center font-extrabold mb-5 border-b-2 p-2">
+      <Helmet>
+        <title>Jobify | Add A Job</title>
+      </Helmet>
+      <h1 className="text-3xl text-center font-extrabold font-roboto mb-5 border-b-2 p-2">
         Add A Job
       </h1>
       <form onSubmit={handleAddJob}>
@@ -52,7 +81,22 @@ const AddAJob = () => {
               <input
                 type="text"
                 placeholder="Image URL"
-                name="photo"
+                name="jobBanner"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+        </div>
+        <div className="md:flex gap-4">
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text">Company Logo</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="text"
+                placeholder="Logo"
+                name="companyLogo"
                 className="input input-bordered w-full"
               />
             </label>
@@ -69,7 +113,7 @@ const AddAJob = () => {
                 type="text"
                 placeholder="Name"
                 defaultValue={user?.displayName}
-                name="name"
+                name="userName"
                 className="input input-bordered w-full"
               />
             </label>

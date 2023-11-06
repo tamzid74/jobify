@@ -17,7 +17,7 @@ const Testimonials = () => {
   };
   return (
     <>
-      <h1 className="text-center mt-20 mb-5 text-2xl text-primary font-bold font-roboto">Testimonials From Our Customers</h1>
+      <h1 className="text-center mt-24 mb-5 text-2xl text-primary font-bold font-roboto">Testimonials From Our Customers</h1>
       <p className="text-center text-xs md:text-base font-edu font-bold mb-10">Jobify turned my life around, securing me a job in no time. <br /> I’m immensely grateful for their quick and effective assistance</p>
       <div
         style={{ backgroundImage: `url(${bgImage})` }}

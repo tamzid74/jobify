@@ -18,7 +18,7 @@ const Extra = () => {
             It’s beautiful and the coding is done quickly and seamlessly. Thank
             you!
           </p>
-          <button className="btn w-36">Upload you Cv</button>
+          <button className= " btn rounded-full w-36">Upload you Cv</button>
         </div>
         <div className="hidden lg:flex">
           <img className="" src={image1} alt="" />
