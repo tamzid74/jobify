@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const AllJobs = () => {
-  const navigate = useNavigate()
-  const {user}=useContext(AuthContext)
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const [search, setSearch] = useState("");
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -30,17 +31,20 @@ const AllJobs = () => {
     setSearch("");
     setFilteredJobs(jobs);
   };
-  const handleDetailsButton = () => {
+  const handleDetailsButton = (_id) => {
     if (!user) {
       toast.error("You have to logged in First to see view details");
       navigate("/login");
     } else {
-      navigate("/job/:id");
+      navigate(`/jobDetails/${_id}`);
     }
   };
 
   return (
-    <div className=" w-full max-w-[1250px] px-[25px] mx-auto mt-20 mb-20">
+    <div className="w-full max-w-[1250px] px-[25px] mx-auto mt-20 mb-20">
+      <Helmet>
+        <title>Jobify | All jobs</title>
+      </Helmet>
       <h1 className="text-3xl text-center font-extrabold font-roboto">
         All Jobs
       </h1>
@@ -77,9 +81,8 @@ const AllJobs = () => {
             </tr>
           </thead>
           <tbody className="font-roboto">
-            {/* row 1 */}
             {filteredJobs.map((job, index) => (
-              <tr key={job._id}>
+              <tr key={index}>
                 <th className="text-primary">{index + 1}</th>
                 <td>
                   <div className="font-bold">{job.userName}</div>
@@ -89,7 +92,10 @@ const AllJobs = () => {
                 <td>{job.salaryRange}</td>
                 <td>{job.applicationDeadline}</td>
                 <th>
-                  <button onClick={handleDetailsButton} className="btn btn-primary btn-outline btn-xs">
+                  <button
+                    onClick={() => handleDetailsButton(job._id)}
+                    className="btn btn-primary btn-outline btn-xs"
+                  >
                     details
                   </button>
                 </th>

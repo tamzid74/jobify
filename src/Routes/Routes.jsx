@@ -11,6 +11,7 @@ import AppliedJobs from "../Pages/AppliedJobs";
 import MyJobs from "../Pages/MyJobs";
 import PrivateRoutes from "./Private";
 import JobDetails from "../Components/JobDetails";
+import UpdatedJob from "../Pages/UpdatedJob";
 
 const router = createBrowserRouter([
   {
@@ -23,16 +24,15 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/alljobs",
+        path: "/allJobs",
         element: <AllJobs></AllJobs>,
-        // loader:()=> fetch('http://localhost:5000/jobs')
       },
       {
-        path: "/appliedjobs",
-        element: <AppliedJobs></AppliedJobs>,
+        path: "/appliedJobs",
+        element:<PrivateRoutes><AppliedJobs></AppliedJobs></PrivateRoutes>,
       },
       {
-        path: "/addajob",
+        path: "/addAJob",
         element: (
           <PrivateRoutes>
             <AddAJob></AddAJob>
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myjobs",
+        path: "/myJobs",
         element: (
           <PrivateRoutes>
             <MyJobs></MyJobs>
@@ -52,8 +52,23 @@ const router = createBrowserRouter([
         element: <Blogs></Blogs>,
       },
       {
-        path: "/job/:id",
-        element: <JobDetails></JobDetails>,
+        path: "/jobDetails/:id",
+        element: (
+          <PrivateRoutes>
+            <JobDetails></JobDetails>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/jobDetails/${params.id}`),
+      },
+      {
+        path: "/updatedJobs/:id",
+        element: (
+          <PrivateRoutes>
+            <UpdatedJob></UpdatedJob>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),
       },
       {
         path: "/login",

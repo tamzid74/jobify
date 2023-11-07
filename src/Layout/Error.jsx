@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import error from "../assets/images/undraw_Page_not_found_re_e9o6-removebg-preview.png";
+import error from "../assets/images/20602777_6325255.svg";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Helmet } from "react-helmet-async";
 
@@ -18,7 +18,7 @@ const Error = () => {
           </Link>
         </div>
         <div className=" w-full h-[80vh] flex justify-center items-center">
-          <img src={error} alt="" />
+          <img className="md:w-1/2" src={error} alt="" />
         </div>
       </div>
     </>

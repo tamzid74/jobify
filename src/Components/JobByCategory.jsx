@@ -10,6 +10,7 @@ const JobByCategory = () => {
   const [jobs, setJobs] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/jobs")
@@ -23,7 +24,7 @@ const JobByCategory = () => {
   const handleTabChange = (index) => {
     setActiveTab(index);
   };
-  const categories = ["All Jobs", "On Site", "Remote", "Part Time", "Hybrid"];
+  const categories = ["All Jobs", "On Site", "Remote", "Part-Time", "Hybrid"];
 
   const filterJobsByCategory = (category) => {
     if (category === "All Jobs") {
@@ -31,14 +32,13 @@ const JobByCategory = () => {
     }
     return jobs.filter((job) => job.jobCategory === category);
   };
-  const navigate = useNavigate();
 
-  const handleDetailsButton = () => {
+  const handleDetailsButton = (_id) => {
     if (!user) {
       toast.error("You have to logged in First to see view details");
-      navigate('/login')
-    }else{
-        navigate('/job/:id')
+      navigate("/login");
+    } else {
+      navigate(`/jobDetails/${_id}`);
     }
   };
 
@@ -59,8 +59,8 @@ const JobByCategory = () => {
                   className="card bg-primary transition-transform duration-200 hover:scale-105 hover:shadow-md font-roboto "
                 >
                   <div className="card-body">
-                    <h2 className="card-title">{job.name}</h2>
-                    <p className="">Job Title: {job.jobTitle}</p>
+                    <h2 className="card-title">Job Title: {job.jobTitle}</h2>
+                    <p className=""> Posted By Job: {job.userName}</p>
                     <p className="">Job Posting Date: {job.jobPostingDate}</p>
                     <p className="">
                       Application Deadline: {job.applicationDeadline}
@@ -75,7 +75,10 @@ const JobByCategory = () => {
                     </div>
 
                     <div className="card-actions justify-end">
-                      <button onClick={handleDetailsButton} className="btn btn-sm rounded-full btn-white hover:btn-outline">
+                      <button
+                        onClick={() => handleDetailsButton(job._id)}
+                        className="btn btn-sm rounded-full btn-white hover:btn-outline"
+                      >
                         View Details
                       </button>
                     </div>

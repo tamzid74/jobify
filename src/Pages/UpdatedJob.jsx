@@ -1,15 +1,30 @@
-// import Swal from "sweetalert2";
 import { useContext, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../provider/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { AuthContext } from "../provider/AuthProvider";
-import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
-const AddAJob = () => {
-  const { user } = useContext(AuthContext);
+const UpdatedJob = () => {
+  const job = useLoaderData();
+  console.log(job)
+  const {
+    _id,
+    jobBanner,
+    jobTitle,
+    jobCategory,
+    salaryRange,
+    jobDescription,
+    jobPostingDate,
+    companyLogo,
+    applicationDeadline,
+    jobApplicants,
+  } = job;
+
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const handleAddJob = (e) => {
+  const { user } = useContext(AuthContext);
+  const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
     const jobBanner = form.jobBanner.value;
@@ -21,9 +36,9 @@ const AddAJob = () => {
     const jobPostingDate = form.jobPostingDate.value;
     const companyLogo = form.companyLogo.value;
     const applicationDeadline = form.applicationDeadline.value;
-    const jobApplicants = parseInt(form.jobApplicants.value);
+    const jobApplicants = form.jobApplicants.value;
     const email = user?.email;
-    const newJob = {
+    const updateJob = {
       jobBanner,
       userName,
       email,
@@ -36,25 +51,23 @@ const AddAJob = () => {
       jobApplicants,
       companyLogo,
     };
-    console.log(newJob);
-    fetch("http://localhost:5000/jobs", {
-      method: "POST",
+    fetch(`http://localhost:5000/update/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newJob),
+      body: JSON.stringify(updateJob),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Job added successfully",
+            text: "Job Update successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });
-          form.reset();
         }
       });
   };
@@ -67,9 +80,9 @@ const AddAJob = () => {
         <title>Jobify | Add A Job</title>
       </Helmet>
       <h1 className="text-3xl text-center font-extrabold font-roboto mb-5 border-b-2 p-2">
-        Add A Job
+        Update Your Job
       </h1>
-      <form onSubmit={handleAddJob}>
+      <form onSubmit={handleUpdate}>
         {/* {row-1} */}
         <div className="md:flex gap-4">
           <div className="form-control w-full">
@@ -81,6 +94,7 @@ const AddAJob = () => {
                 type="text"
                 placeholder="Image URL"
                 name="jobBanner"
+                defaultValue={jobBanner}
                 className="input input-bordered w-full"
               />
             </label>
@@ -96,6 +110,7 @@ const AddAJob = () => {
                 type="text"
                 placeholder="Logo"
                 name="companyLogo"
+                defaultValue={companyLogo}
                 className="input input-bordered w-full"
               />
             </label>
@@ -125,6 +140,7 @@ const AddAJob = () => {
               <input
                 type="text"
                 placeholder="Job Title"
+                defaultValue={jobTitle}
                 name="jobTitle"
                 className="input input-bordered w-full"
               />
@@ -141,6 +157,7 @@ const AddAJob = () => {
               <input
                 type="text"
                 placeholder="Salary range"
+                defaultValue={salaryRange}
                 name="salaryRange"
                 className="input input-bordered w-full"
               />
@@ -152,6 +169,7 @@ const AddAJob = () => {
             </label>
             <select
               className="select select-bordered w-full"
+              defaultValue={jobCategory}
               name="jobCategory"
             >
               <option value="On Site">On Site</option>
@@ -172,6 +190,7 @@ const AddAJob = () => {
                 type="text"
                 placeholder="Job Description"
                 name="jobDescription"
+                defaultValue={jobDescription}
                 className="input input-bordered w-full"
               />
             </label>
@@ -183,6 +202,7 @@ const AddAJob = () => {
             <label className="input-group">
               <input
                 type="date"
+                defaultValue={jobPostingDate}
                 name="jobPostingDate"
                 className="input input-bordered w-full"
               />
@@ -198,6 +218,7 @@ const AddAJob = () => {
             <label className="input-group">
               <DatePicker
                 selected={selectedDate}
+                defaultValue={applicationDeadline}
                 onChange={handleDateChange}
                 name="applicationDeadline"
                 className="input input-bordered w-full"
@@ -213,7 +234,7 @@ const AddAJob = () => {
                 type="type"
                 placeholder="Job Applicants"
                 name="jobApplicants"
-                defaultValue={0}
+                defaultValue={jobApplicants}
                 className="input input-bordered w-full"
               />
             </label>
@@ -222,11 +243,11 @@ const AddAJob = () => {
         <input
           className="btn btn-success btn-sm w-full mt-10"
           type="submit"
-          value="ADD A JOB"
+          value="Update Job"
         />
       </form>
     </div>
   );
 };
 
-export default AddAJob;
+export default UpdatedJob;
