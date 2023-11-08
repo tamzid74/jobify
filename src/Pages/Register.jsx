@@ -6,6 +6,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet-async";
+import bgImage from "../assets/images/13295064_5172658.jpg";
 
 const Register = () => {
   const { createUser, updateUser, setUser } = useContext(AuthContext);
@@ -58,16 +59,16 @@ const Register = () => {
         <title>Jobify | Register</title>
       </Helmet>
       ;
-      <div className="hero min-h-screen font-roboto">
-        <div className="hero-content flex-col w-full">
+      <div className="hero min-h-screen font-roboto bg-center bg-cover"style={{ backgroundImage: `url(${bgImage})` }}>
+        <div className="hero-content flex-col glass w-[400px] lg:w-[500px] mt-10 mb-10 rounded-lg p-10 font-roboto">
           <div className="text-center">
-            <h1 className="text-5xl font-bold">Register now</h1>
+            <h1 className="text-5xl font-bold text-primary">Register now</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
             <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">PhotoUrl</span>
+                  <span className="label-text text-white">PhotoUrl</span>
                 </label>
                 <input
                   type="text"
@@ -79,7 +80,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text text-white">Name</span>
                 </label>
                 <input
                   type="text"
@@ -91,7 +92,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input
                   type="email"
@@ -103,7 +104,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-white">Password</span>
                 </label>
                 <div className="relative">
                   <input
@@ -129,7 +130,7 @@ const Register = () => {
                   Register
                 </button>
               </div>
-              <p className="text-center">
+              <p className="text-center text-white">
                 Already have an account?{" "}
                 <Link className="btn-link" to="/login">
                   Login

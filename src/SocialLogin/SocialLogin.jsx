@@ -23,8 +23,8 @@ const SocialLogin = () => {
   };
   return (
     <>
-      <div className="divider">Continue With</div>
-      <div className="font-roboto">
+      <div className="divider text-white">Continue With</div>
+      <div className="font-roboto glass">
         <motion.button
           whileHover={{
             scale: 1.2,

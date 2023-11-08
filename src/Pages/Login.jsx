@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet-async";
+import bgImage from "../assets/images/13295064_5172658.jpg";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -53,16 +54,16 @@ const Login = () => {
         <title>Jobify | Login</title>
       </Helmet>
       ;
-      <div className="hero min-h-screen font-roboto">
-        <div className="hero-content flex-col w-full">
+      <div className="hero min-h-screen font-roboto bg-center bg-cover"style={{ backgroundImage: `url(${bgImage})` }}>
+        <div className="hero-content flex-col glass w-[400px] lg:w-[500px] mt-10 mb-10 rounded-lg p-10 font-roboto">
           <div className="text-center">
-            <h1 className="text-5xl font-bold">Login now!</h1>
+            <h1 className="text-5xl font-bold text-primary">Login now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input
                   type="email"
@@ -77,7 +78,7 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-white">Password</span>
                 </label>
                 <div className="relative">
                   <input
@@ -98,7 +99,7 @@ const Login = () => {
                   <p className="text-sm text-red-600">{passError}</p>
                 )}
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <a href="#" className="label-text-alt link link-hover text-white">
                     Forgot password?
                   </a>
                 </label>
@@ -107,8 +108,8 @@ const Login = () => {
                 <button className="btn btn-success">Login</button>
               </div>
               <div>
-                <p className="text-center">
-                  Don&apos;t have an account
+                <p className="text-center text-white">
+                  Don&apos;t have an account?
                   <Link to="/register" className="btn-link">
                     Register
                   </Link>

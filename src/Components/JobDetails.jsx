@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { useLoaderData } from "react-router-dom";
@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 
 const JobDetails = () => {
   const { user } = useContext(AuthContext);
+
   const job = useLoaderData();
   const {
     companyLogo,
@@ -19,6 +20,7 @@ const JobDetails = () => {
     jobCategory,
     applicationDeadline,
   } = job;
+  const [jobApplicant, setJobApplicant] = useState(job.jobApplicants);
   const handleApply = () => {
     const now = Date.now();
 
@@ -65,8 +67,24 @@ const JobDetails = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          toast.success("Submitted Successfully......");
-          form.reset();
+          toast.success('Submitted Successfully...')
+          form.reset()
+          setJobApplicant(parseInt(jobApplicants)+1);
+          fetch("http://localhost:5000/jobs/" + job._id, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              $inc: { jobApplicants: 1 },
+            }),
+          })
+            .then((response) => response.json())
+            .then((updateData) => {
+              if (updateData.modification === 1) {
+                toast.success("Submitted Successfully......");
+              }
+            });
         }
       });
   };
@@ -116,7 +134,12 @@ const JobDetails = () => {
                     Fill out the form below to apply for this job.
                   </p>
 
-                  <form onSubmit={handleSubmit} method="dialog">
+                  <form onSubmit={handleSubmit}>
+                    <form method="dialog">
+                      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                        ✕
+                      </button>
+                    </form>
                     <label className="block text-sm mb-2">Name</label>
                     <input
                       type="text"
@@ -150,7 +173,7 @@ const JobDetails = () => {
                 </div>
               </dialog>
               <span className="text-xs md:text-base">
-                Applicant: {jobApplicants}
+                Applicants: {jobApplicant}
               </span>
             </div>
           </div>

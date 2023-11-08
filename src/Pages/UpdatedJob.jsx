@@ -220,6 +220,7 @@ const UpdatedJob = () => {
                 selected={selectedDate}
                 defaultValue={applicationDeadline}
                 onChange={handleDateChange}
+                shouldCloseOnSelect={false}
                 name="applicationDeadline"
                 className="input input-bordered w-full"
               />

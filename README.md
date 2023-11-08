@@ -2,7 +2,7 @@
 
 ## Live site Link
 
-Click here for live site: [https://technology-electronics-store.web.app/](https://technology-electronics-store.web.app/)
+Click here for live site: [https://jobify-74f3d.web.app/](https://jobify-74f3d.web.app/)
 
 
 # Feature Of my site

@@ -28,7 +28,7 @@ const Banner = () => {
             Find jobs, create trackable resumes and enrich your applications.
           </p>
           <div className="join">
-            <div>
+            <div className="w-[150px] md:w-[200px]">
               <div>
                 <input
                   className="input input-bordered join-item text-black"
@@ -36,7 +36,7 @@ const Banner = () => {
                 />
               </div>
             </div>
-            <div className="indicator">
+            <div className="indicator ">
               <button className="btn btn-primary join-item">Search</button>
             </div>
           </div>

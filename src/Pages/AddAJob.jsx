@@ -21,7 +21,7 @@ const AddAJob = () => {
     const jobPostingDate = form.jobPostingDate.value;
     const companyLogo = form.companyLogo.value;
     const applicationDeadline = form.applicationDeadline.value;
-    const jobApplicants = parseInt(form.jobApplicants.value);
+    const jobApplicants = form.jobApplicants.value;
     const email = user?.email;
     const newJob = {
       jobBanner,
