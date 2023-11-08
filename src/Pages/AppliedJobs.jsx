@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
-import image from "../assets/images/9264822-removebg-preview.png"
+import image from "../assets/images/9264822-removebg-preview.png";
 
 const AppliedJobs = () => {
   const { user } = useContext(AuthContext);
   const [myJobs, setMyJobs] = useState([]);
   const [selectCategory, setSelectCategory] = useState("All");
   useEffect(() => {
-    fetch(`http://localhost:5000/appliedJobs?email=${user?.email}`)
+    fetch(`http://localhost:5000/appliedJobs?email=${user?.email}`, {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => {
         setMyJobs(data);
@@ -55,6 +57,7 @@ const AppliedJobs = () => {
                   <th>JobCategory</th>
                   <th>ApplicationDeadline</th>
                   <th>Job Applicant</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -73,7 +76,11 @@ const AppliedJobs = () => {
                     <td>{myJob.jobCategory}</td>
                     <td>{myJob.applicationDeadline}</td>
                     <td>{myJob.jobApplicants}</td>
-                    <th></th>
+                    <td>
+                      <button className="btn btn-sm btn-primary">
+                        Download Pdf
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

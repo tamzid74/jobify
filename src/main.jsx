@@ -4,7 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import router from "./Routes/Routes";
 import { HelmetProvider } from "react-helmet-async";
-import AuthProvider from "./Provider/AuthProvider";
+import AuthProvider from "./provider/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
