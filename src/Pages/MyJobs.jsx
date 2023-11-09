@@ -9,7 +9,7 @@ const MyJobs = () => {
   const { user } = useContext(AuthContext);
   const [myJobs, setMyJobs] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/myJobs?email=${user?.email}`,{credentials:'include'})
+    fetch(`https://b8-a11-jobify-server-side.vercel.app/myJobs?email=${user?.email}`,{credentials:'include'})
       .then((res) => res.json())
       .then((data) => {
         setMyJobs(data);
@@ -29,7 +29,7 @@ const MyJobs = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/myJobs/${id}`, {
+        fetch(`https://b8-a11-jobify-server-side.vercel.app/myJobs/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

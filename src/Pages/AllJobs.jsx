@@ -14,7 +14,7 @@ const AllJobs = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5000/jobs")
+    fetch("https://b8-a11-jobify-server-side.vercel.app/jobs")
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);

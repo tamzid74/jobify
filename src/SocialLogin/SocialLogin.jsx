@@ -9,16 +9,16 @@ const SocialLogin = () => {
   const { googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogin = (media) => {
-    // const toastId = toast.loading("Signing in....");
+    const toastId = toast.loading("Signing in....");
     media()
       .then((result) => {
         console.log(result.user);
-        toast.success("Signed in...");
+        toast.success("Signed in...",{id: toastId});
         navigate(`/`);
       })
       .catch((error) => {
         console.log(error.message);
-        toast.error(error.message);
+        toast.error(`${error.message}`,{id: toastId});
       });
   };
   return (

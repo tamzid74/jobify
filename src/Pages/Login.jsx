@@ -54,7 +54,7 @@ const Login = () => {
         <title>Jobify | Login</title>
       </Helmet>
       ;
-      <div className="hero min-h-screen font-roboto bg-center bg-cover"style={{ backgroundImage: `url(${bgImage})` }}>
+      <div className="hero min-h-screen font-roboto bg-center bg- bg-cover"style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="hero-content flex-col glass w-[400px] lg:w-[500px] mt-10 mb-10 rounded-lg p-10 font-roboto">
           <div className="text-center">
             <h1 className="text-5xl font-bold text-primary">Login now!</h1>
@@ -105,7 +105,7 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-success">Login</button>
+                <button className="btn btn-outline btn-success">Login</button>
               </div>
               <div>
                 <p className="text-center text-white">

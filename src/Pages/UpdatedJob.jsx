@@ -51,7 +51,7 @@ const UpdatedJob = () => {
       jobApplicants,
       companyLogo,
     };
-    fetch(`http://localhost:5000/update/${_id}`, {
+    fetch(`https://b8-a11-jobify-server-side.vercel.app/update/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

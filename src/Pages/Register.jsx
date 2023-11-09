@@ -35,7 +35,7 @@ const Register = () => {
       );
       return;
     }
-    const toastId = toast.loading("loading...");
+    const toastId = toast.loading("Creating User...");
     createUser(email, password)
       .then((result) => {
         updateUser(name, photo).then(() => {
@@ -44,12 +44,12 @@ const Register = () => {
             prev.photoURL = photo;
             return { ...prev };
           });
-          toast.success("Logged in...", { id: toastId });
+          toast.success("User Created", { id: toastId });
           navigate(`/`);
         });
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(`${error.message}`, { id: toastId });
       });
   };
 
@@ -59,7 +59,10 @@ const Register = () => {
         <title>Jobify | Register</title>
       </Helmet>
       ;
-      <div className="hero min-h-screen font-roboto bg-center bg-cover"style={{ backgroundImage: `url(${bgImage})` }}>
+      <div
+        className="hero min-h-screen font-roboto bg-center bg-cover"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
         <div className="hero-content flex-col glass w-[400px] lg:w-[500px] mt-10 mb-10 rounded-lg p-10 font-roboto">
           <div className="text-center">
             <h1 className="text-5xl font-bold text-primary">Register now</h1>

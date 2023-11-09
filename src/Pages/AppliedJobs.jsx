@@ -8,7 +8,7 @@ const AppliedJobs = () => {
   const [myJobs, setMyJobs] = useState([]);
   const [selectCategory, setSelectCategory] = useState("All");
   useEffect(() => {
-    fetch(`http://localhost:5000/appliedJobs?email=${user?.email}`, {
+    fetch(`https://b8-a11-jobify-server-side.vercel.app/appliedJobs?email=${user?.email}`, {
       credentials: "include",
     })
       .then((res) => res.json())

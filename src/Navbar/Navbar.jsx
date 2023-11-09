@@ -141,13 +141,13 @@ const Navbar = () => {
           )}
 
           {user?.email ? (
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              onClick={logOut}
-              className="btn btn-primary btn-outline btn-sm font-roboto"
-            >
-              Sign out
-            </motion.button>
+            <Link to='/login'><motion.button
+            whileHover={{ scale: 1.1 }}
+            onClick={logOut}
+            className="btn btn-primary btn-outline btn-sm font-roboto"
+          >
+            Sign out
+          </motion.button></Link>
           ) : (
             <Link to="/login">
               <motion.p

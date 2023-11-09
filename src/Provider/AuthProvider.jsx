@@ -13,6 +13,8 @@ import PropTypes from "prop-types";
 import { GoogleAuthProvider } from "firebase/auth";
 import app from "../config/firebase.config";
 import axios from "axios";
+import toast from "react-hot-toast";
+
 
 export const AuthContext = createContext(null);
 
@@ -44,7 +46,10 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    signOut(auth);
+    signOut(auth)
+    .then(() => {
+      toast.success("SignOut Successfully")
+    })
   };
 
   useEffect(() => {
@@ -55,14 +60,14 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
+          .post("https://b8-a11-jobify-server-side.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
             console.log(res.data);
           });
       } else {
-        axios.post("http://localhost:5000/logout", loggedUser, {
+        axios.post("https://b8-a11-jobify-server-side.vercel.app/logout", loggedUser, {
           withCredentials: true,
         })
         .then(res=>{
@@ -73,7 +78,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unSubscribe();
     };
-  }, []);
+  }, [user?.email]);
 
   const authInfo = {
     user,

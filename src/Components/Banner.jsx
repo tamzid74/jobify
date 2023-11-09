@@ -10,14 +10,21 @@ const Banner = () => {
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
         <motion.div
-          initial={{ opacity: 0, scale: 2 }}
-          animate={{ opacity: 1, scale: 1 }}
+          // initial={{ opacity: 0, scale: 2 }}
+          // animate={{ opacity: 1, scale: 1 }}
+          // transition={{
+          //   duration: 0.5,
+          //   delay: 0.5,
+          // }}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
           transition={{
-            duration: 0.5,
-            delay: 0.5,
+            type: "spring",
+            stiffness: 260,
+            damping: 20
           }}
         >
-          <h1 className="mb-5 text-3xl lg:text-5xl font-roboto font-bold">
+          <h1 className="mb-5 text-4xl lg:text-5xl font-roboto font-bold">
             Join us &{" "}
             <span className="text-primary font-extrabold">
               Explore Thousands
@@ -28,16 +35,14 @@ const Banner = () => {
             Find jobs, create trackable resumes and enrich your applications.
           </p>
           <div className="join">
-            <div className="w-[150px] md:w-[200px]">
-              <div>
+            <div className=" ">
                 <input
-                  className="input input-bordered join-item text-black"
+                  className="input input-bordered input-sm md:input w-full max-w-xs join-item  text-black"
                   placeholder="Search"
                 />
-              </div>
             </div>
-            <div className="indicator ">
-              <button className="btn btn-primary join-item">Search</button>
+            <div className="indicator">
+              <button className=" btn btn-primary btn-sm md:btn md:btn-primary join-item ">Search</button>
             </div>
           </div>
         </motion.div>

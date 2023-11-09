@@ -3,6 +3,8 @@ import Banner from "../Components/Banner";
 import Extra from "../Components/Extra";
 import Testimonials from "../Components/Testimonials";
 import JobByCategory from "../Components/JobByCategory";
+import ExtraBanner from "../Components/ExtraBanner";
+
 
 
 const Home = () => {
@@ -13,8 +15,10 @@ const Home = () => {
       </Helmet>
         <Banner></Banner>
         <JobByCategory></JobByCategory>
+        <ExtraBanner></ExtraBanner>
         <Testimonials></Testimonials>
         <Extra></Extra>
+        
     </div>
   );
 };

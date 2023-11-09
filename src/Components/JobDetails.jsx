@@ -56,7 +56,7 @@ const JobDetails = () => {
     };
     console.log(appliedJob);
 
-    fetch("http://localhost:5000/appliedJobs", {
+    fetch("https://b8-a11-jobify-server-side.vercel.app/appliedJobs", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -70,7 +70,7 @@ const JobDetails = () => {
           toast.success('Submitted Successfully...')
           form.reset()
           setJobApplicant(parseInt(jobApplicants)+1);
-          fetch("http://localhost:5000/jobs/" + job._id, {
+          fetch("https://b8-a11-jobify-server-side.vercel.app/jobs/" + job._id, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",

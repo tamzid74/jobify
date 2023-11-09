@@ -6,6 +6,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 const JobByCategory = () => {
   const [jobs, setJobs] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
@@ -15,7 +16,7 @@ const JobByCategory = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5000/jobs")
+    fetch("https://b8-a11-jobify-server-side.vercel.app/jobs")
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
@@ -47,8 +48,12 @@ const JobByCategory = () => {
 
   return (
     <div className="w-full max-w-[1250px] px-[25px] mx-auto mt-20">
-      <h1 className="text-3xl text-primary font-robot font-bold text-center mb-2">Features Jobs</h1>
-      <p className="text-center mb-10 font-bold font-edu">Know your worth and find the job that qualify your life</p>
+      <h1 className="text-3xl text-primary font-robot font-bold text-center mb-2">
+        Features Jobs
+      </h1>
+      <p className="text-center mb-10 font-bold font-edu">
+        Know your worth and find the job that qualify your life
+      </p>
       {isLoading ? ( // Conditionally render loading indicator if isLoading is true
         <div className="text-7xl min-h-screen flex items-center justify-center">
           <span className="loading loading-bars loading-lg"></span>
@@ -64,9 +69,10 @@ const JobByCategory = () => {
             <TabPanel key={index}>
               <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {filterJobsByCategory(category).map((job) => (
-                  <div
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 0 }}
                     key={job._id}
-                    className="card bg-primary transition-transform duration-200 hover:scale-105 hover:shadow-md font-roboto "
+                    className="card bg-primary font-roboto "
                   >
                     <div className="card-body">
                       <h2 className="card-title">Job Title: {job.jobTitle}</h2>
@@ -93,7 +99,7 @@ const JobByCategory = () => {
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </TabPanel>

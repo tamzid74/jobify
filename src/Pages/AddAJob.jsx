@@ -37,7 +37,7 @@ const AddAJob = () => {
       companyLogo,
     };
     console.log(newJob);
-    fetch("http://localhost:5000/jobs", {
+    fetch("https://b8-a11-jobify-server-side.vercel.app/jobs", {
       method: "POST",
       headers: {
         "content-type": "application/json",

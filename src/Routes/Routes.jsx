@@ -59,7 +59,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobDetails/${params.id}`),
+          fetch(`https://b8-a11-jobify-server-side.vercel.app/jobDetails/${params.id}`),
       },
       {
         path: "/updatedJobs/:id",
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
             <UpdatedJob></UpdatedJob>
           </PrivateRoutes>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),
+        loader: ({ params }) => fetch(`https://b8-a11-jobify-server-side.vercel.app/jobs/${params.id}`),
       },
       {
         path: "/login",
