@@ -8,11 +8,11 @@ Jobify is a dynamic web application powered by React, MongoDB, React Router, Fir
 Click here for the live site: [https://jobify-74f3d.web.app/](https://jobify-74f3d.web.app/)
 
 
-# Feature Of my site
+# 🚩Feature Of my site
 
 - Clear Navigation Menus: Easily navigate through the website with intuitive menus, ensuring a smooth user experience.
 
-- Search Bar: Quickly find specific jobs using the search bar in the All job routes, making job hunting efficient and straightforward.
+- Search Bar: Quickly find specific jobs using the search bar in All job routes, making job hunting efficient and straightforward.
 
 - Applied Job Filter: Filter through applied jobs in the Applied Job routes, providing users with a quick way to track and manage their applications.
 
